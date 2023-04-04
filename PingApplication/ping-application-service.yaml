@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ping-application-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 7800
+      targetPort: 7800
+  selector:
+    app: ping-application
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
