@@ -1,0 +1,18 @@
+/* =====================================================================
+sha1sum-hostname is a user variable that is created by the ACE server on
+startup for ACE 12.0.6 and later.
+
+Note that there is no default, as it is better that the flow fails to
+start than run with a fixed correlation ID.
+===================================================================== */
+DECLARE "sha1sum-hostname" EXTERNAL CHARACTER;
+
+CREATE COMPUTE MODULE HTTPFlow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.Properties = InputProperties;
+		SET OutputRoot.JSON.Data.response.success = 'true';
+		SET OutputRoot.JSON.Data.response.server = "sha1sum-hostname";
+		RETURN TRUE;
+	END;
+END MODULE;
