@@ -12,4 +12,4 @@ RUN export LICENSE=accept && \
     ibmint optimize server --work-dir /home/aceuser/ace-server --disable NodeJS
 
 # Fix openshift userid randomization
-RUN chmod -R 777 /home/aceuser/ace-server
+RUN chmod -R 777 /home/aceuser
